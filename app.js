@@ -117,12 +117,12 @@ const pollVatsim = async () => {
 			});
 
 			dataControllers.push(controller.callsign);
-	
+
 			const session = await ControllerHours.findOne({
 				cid: controller.cid,
 				timeStart: controller.logon_time
 			});
-	
+
 			if(!session) {
 				await ControllerHours.create({
 					cid: controller.cid,
@@ -131,10 +131,32 @@ const pollVatsim = async () => {
 					position: controller.callsign
 				});
 				await zabApi.post(`/stats/fifty/${controller.cid}`);
+				const queueName = 'myQueue';
+				let datata = [{
+					cid: controller.cid,
+					name: controller.name,
+					rating: controller.rating,
+					pos: controller.callsign,
+					timeStart: controller.logon_time,
+					atis: controller.text_atis ? controller.text_atis.join(' - ') : '',
+					frequency: controller.frequency}]
+				let datatata = JSON.stringify(datata)
+
+				redis.lpush(queueName, datatata, (error) => {
+					if (error) {
+						console.log(error);
+					} else {
+						//console.log('Item enqueued');
+					}
+				});
+
+
 			} else {
 				session.timeEnd = new Date(new Date().toUTCString());
 				await session.save();
 			}
+
+
 		}
 		const callsignParts = controller.callsign.split('_');
 		if(neighbors.includes(callsignParts[0]) && callsignParts[callsignParts.length - 1] === "CTR") { // neighboring center
@@ -144,6 +166,17 @@ const pollVatsim = async () => {
 
 	for(const atc of redisControllers) {
 		if(!dataControllers.includes(atc)) {
+			const queueName1 = '1231231231231231231231';
+
+			let name123 = JSON.stringify(atc);
+
+			redis.lpush(queueName1, name123, (error) => {
+				if (error) {
+					console.log(error);
+				} else {
+					//console.log('Item enqueued1');
+				}
+			});
 			redis.publish('CONTROLLER:DELETE', atc);
 		}
 	}
