@@ -25,7 +25,7 @@ const zabApi = axios.create({
 	}
 });
 
-const atcPos = ["ORD", "CHI", "SBN", "RFD", "PIA", "MSN", "MKG", "MLI", "MKE", "GRR", "FWA", "CMI", "CID", "AZO", "ALO", "EKM", "MDW", "LAF", "BTL", "OSH", "UGN", "ENW", "PWK", "MWC", "DEC", "GUS", "JVL", "VOK", "CMY", "ARR"];
+const atcPos = ["ORD", "CHI", "SBN", "RFD", "PIA", "MSN", "MKG", "MLI", "MKE", "GRR", "FWA", "CMI", "CID", "AZO", "ALO", "EKM", "MDW", "LAF", "BTL", "OSH", "UGN", "ENW", "PWK", "MWC", "DEC", "GUS", "JVL", "VOK", "CMY", "ARR", "LOT"];
 const airports = ["KALO","KAZO","KORD","KMDW","KMKE","KSBN","KEKM","KBTL","KGRR","KMKG","KRAC","KPWK","KARR","KDPA","KCID","KUES","KUGN","KMSN","KJVL","KGYY","KMLI","KOSH","KVOK","KDBQ","KDEC","KFWA","KGUS","KCMI","KLAF","KSFY","KCWI","KOQW","KTIP","KIKK","KDNV","KOOA","KOTM","4C8","4K6","KTVK","KFSW","KBRL","KFFL","KAWG","KGGI","KTZT","KMIW","KIFA","C25","KOLZ","KIIB","KVTI","C27","KPDC","KOVS","WS51","93C","26WN","KLNR","39WI","Y72","82C","KDAF","2WN5","67WI","63C","8WI0","Y50","0WI4","9WN1","WI55","31WN","WI67","WS46","KFLD","8D1","KSBM","KDLL","C47","91C","KUNU","KHXF","KETB","KRYV","61C","88C","57C","C89","KMWC","KRFD","KFEP","44C","KRPJ","KSQI","C73","KVYS","KLOT","KJOT","C56","KIGQ","KVPZ","KMGC","KPPO","KOXI","KRZL","KRWN","C65","KRCR","KASW","KGSH","KMCX","50I","KIWH","KOKK","KMZZ","KGWB","KHHG","KHAI","KIRS","KOEB","KANQ","C62","9D9","35D","KBIV","3GM","8DA","6D6","Y70","KFFX","C04","13C","8D4","08C","Z98","C91","C20","3HO","C56","2IL9","05C","KPNT","C75","KEZI","KGBG","KDVN","KMUT"];
 const neighbors = ['ZID', 'ZMP', 'ZOB', 'ZKC'];
 
